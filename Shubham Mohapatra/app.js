@@ -23,6 +23,7 @@ let getFacts = async (value) => {
     }
     catch (e) {
         console.log("error: ", e);
+        return 0;
     }
 }
 
@@ -31,7 +32,8 @@ let showFacts = async (value) => {
     h5.innerText = "";
     h5.classList.add("styling");
     data = await getFacts(value);
-    let ul1 = document.createElement("ul");
+    if (data){
+        let ul1 = document.createElement("ul");
     for (data1 of data) {
         console.log(data);
         let li1 = document.createElement("li");
@@ -50,4 +52,7 @@ let showFacts = async (value) => {
         ul1.insertAdjacentElement("beforeend", ul2);
     }
     h5.insertAdjacentElement("beforeend", ul1);
+    } else {
+        h5.innerText = "No meanings found for the entered word. Please try another word.";
+    }
 }
