@@ -41,12 +41,13 @@ let showFacts = async (value) => {
         data2 = data1.definitions;
         let ul2 = document.createElement("ul");
         for (data3 of data2) {
-            console.log(data3);
-            let li2 = document.createElement("li");
             console.log(data2);
+            let li2 = document.createElement("li");
+            console.log(data3.definition);
             li2.innerText = data3.definition;
             ul2.insertAdjacentElement("beforeend", li2)
         }
+        ul1.insertAdjacentElement("beforeend", ul2);
     }
     h5.insertAdjacentElement("beforeend", ul1);
 }
