@@ -8,7 +8,6 @@ form.addEventListener("submit", (event) => {
 let button = document.querySelector("button");
 button.addEventListener("click", () => {
     let value = input.value;
-    // getFacts(value);
     showFacts(value);
 })
 
@@ -18,7 +17,6 @@ let getFacts = async (value) => {
     try {
         let res = await fetch(url + value);
         let data = await res.json();
-        console.log(data[0]);
         return data[0].meanings;
     }
     catch (e) {
@@ -35,17 +33,13 @@ let showFacts = async (value) => {
     if (data){
         let ul1 = document.createElement("ul");
     for (data1 of data) {
-        console.log(data);
         let li1 = document.createElement("li");
-        console.log(data1);
         li1.innerText = data1.partOfSpeech;
         ul1.insertAdjacentElement("beforeend", li1)
         data2 = data1.definitions;
         let ul2 = document.createElement("ul");
         for (data3 of data2) {
-            console.log(data2);
             let li2 = document.createElement("li");
-            console.log(data3.definition);
             li2.innerText = data3.definition;
             ul2.insertAdjacentElement("beforeend", li2)
         }
